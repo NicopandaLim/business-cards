@@ -1,0 +1,10 @@
+<div class = "jumbotron text-center">
+<h2>The Records of User Behavior History</h2>
+
+<ul *ngFor="let behavior of behaviors">
+  <li>
+    <div>{{behavior.log}}</div>
+    <p>{{behavior.timeStamp}}</p>
+  </li>
+</ul>
+</div> 

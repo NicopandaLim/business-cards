@@ -1,0 +1,25 @@
+
+<div style="text-align:left">
+    <h3>
+      Business Card Snapshot
+    </h3>
+  
+    <div>
+      <webcam [height]="350" [width]="550" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+              [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+              [videoOptions]="videoOptions"
+              (cameraSwitched)="cameraWasSwitched($event)"
+              (initError)="handleInitError($event)"
+      ></webcam>
+            <br/>
+      <button class="btn btn-primary" (click)="triggerSnapshot();">Take A Snapshot</button>
+      <button class="btn btn-primary" (click)="toggleWebcam();">Toggle Webcam</button>
+    </div>
+    <br/>
+    <div class="snapshot" *ngIf="webcamImage">
+        <h2>You got it!</h2>
+        <p>If text detection fail, please retry</p>
+        <img [src]="webcamImage.imageAsDataUrl" style="width:400px;height:300px;"/>
+      </div>
+  </div>
+

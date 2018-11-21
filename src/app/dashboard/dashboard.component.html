@@ -1,0 +1,91 @@
+<div class = "jumbotron text-center">
+<nav>
+<h1>
+  Welcome to Dashboard
+</h1>
+
+<p> 
+  <input type="text" #newfirst
+     placeholder="Enter first Name Here">
+  <input type="text" #newlast
+     placeholder="Enter Last Name Here">
+  <button class="btn btn-primary" (click)="searchBusinessCard(newfirst.value, newlast.value)">Search business card</button>
+  <button class="btn btn-primary" (click)="goToaddCard()">Go to Add business card</button>
+</p>
+</nav>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-4"> 
+<div *ngIf="diplayCamComponent">
+<app-takepicture></app-takepicture>
+</div>
+
+<div *ngIf="displayTextDetection">
+<button class="btn btn-primary" (click)="textDetection()">Text Detection</button>
+</div>
+<br/>
+<br/>
+
+<!--Display business card just added-->
+<div *ngIf="displayJustAddCard">
+  <h3>Check new business card info</h3>
+  <div><img [src]=dataUrl style="width:300px;height:220px;"/></div>
+   <div>First name: {{curr_card.firstName}}</div>
+   <div>Last name: {{curr_card.lastName}}</div>
+   <div>PhoneNumber: {{curr_card.phoneNumber}}</div>
+   <div>Email: {{curr_card.email}}</div> 
+   <h3>Wanna correct the name?</h3>
+   <button (click)="goToCorrectName()" class="btn btn-primary btn-danger"> Go to Correct Name</button>
+  <div *ngIf="wannaCorrectName">
+      <p> 
+          <input type="text" #newfirst
+             placeholder="Enter First Name Here">
+          <input type="text" #newlast
+             placeholder="Enter Last Name Here">  
+          <button class="btn btn-primary btn-danger" (click)="correctName(newfirst.value, newlast.value)">CorretName</button>
+        </p>
+      </div>
+  <div>    
+  <h3>If the info of business card is corret now, save it</h3>
+  <button class="btn btn-primary btn-danger" (click)="saveCardToFireBase()">Save</button>
+  </div>    
+</div>
+</div>
+
+<div class="col-sm-4">
+<div *ngIf="displayFoundcards">
+    <h2>The results of search</h2>
+    <ul *ngFor ="let card of foundCards">
+      <li>
+        <div class="cf"><img class="my-image" [src]=card.imageUri id="image" style="width:300px;height:160px;"/></div>
+        <div>{{card.firstName}}</div>
+        <div>{{card.lastName}}</div>
+        <div>{{card.email}}</div>
+        <div>{{card.phoneNumber}}</div>
+      </li>
+    </ul>  
+  </div>
+</div>
+
+<div class="col-sm-4">
+<div ng-class="container-fluid">
+  <h3>Business Cards in database</h3>
+<ul *ngFor ="let card of cards">
+  <li>
+      <div class="cf"><img class="my-image" [src]=card.imageUri id="image" style="width:300px;height:160px;"/>
+        <div>{{card.firstName}}</div>
+        <div>{{card.lastName}}</div>
+        <div>{{card.email}}</div>
+        <div>{{card.phoneNumber}}</div>
+        <div>{{card.extraText}}</div>
+      </div>
+      <br/>   
+  </li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
