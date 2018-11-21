@@ -7,9 +7,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 please add in environment folder which contains firebase key and google cloud api key.
 
 Run: 
-npm install
-npm install --save ngx-webcam
-npm install --save bootstrap font-awesome
+npm install / 
+npm install --save ngx-webcam / 
+npm install --save bootstrap font-awesome / 
 
 ## Development server
 
