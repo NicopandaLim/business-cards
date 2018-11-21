@@ -1,3 +1,5 @@
+// Xiao Lin(ID:1806915)
+// AppUrl: https://github.com/NicopandaLim/business-cards.git
 import { Component } from '@angular/core';
 import { LoginService } from './login/login.service';
 

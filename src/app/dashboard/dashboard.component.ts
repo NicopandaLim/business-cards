@@ -1,3 +1,6 @@
+// Xiao Lin(ID:1806915)
+// AppUrl: https://github.com/NicopandaLim/business-cards.git
+
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';

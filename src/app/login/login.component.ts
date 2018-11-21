@@ -12,6 +12,8 @@ declare var gtag: Function;
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  timer: any;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   emailLogin(email: string, password: string) {
+    this.startTimer();
     this.loginService.loginWithEmail(this.email, this.password)
         .then(() => {
         gtag('event', 'Email login seccessfully!');
@@ -53,6 +56,16 @@ export class LoginComponent implements OnInit {
           console.log(error);
           this.router.navigate(['/login']);
         });
+  }
+
+  startTimer() {
+    this.timer = setTimeout(this.timeoutLogout.bind(this), 300000);
+  }
+
+  timeoutLogout() {
+    console.log('5 mins is up, log out automatically.')
+    this.dashService.addHistory("User loged out automatically for time up.")
+    this.loginService.signOut();
   }
 
 }
